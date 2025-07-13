@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { IDKitWidget, VerificationFlow } from '@worldcoin/idkit'; // Import World ID components
+import { IDKitWidget } from '@worldcoin/idkit'; // Corrected import
 
 function App() {
   const [worldIdVerified, setWorldIdVerified] = useState(false);

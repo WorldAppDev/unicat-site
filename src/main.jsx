@@ -13,28 +13,31 @@ import { WagmiProvider } from 'wagmi';
 import {
   mainnet,
   sepolia,
+  optimism, // This line adds the Optimism chain for Worldchain compatibility
 } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { http } from 'wagmi';
 
-// IMPORTANT: Replace 'YOUR_PROJECT_ID' with your actual WalletConnect Project ID from cloud.walletconnect.com
-const projectId = 'YOUR_PROJECT_ID';
+// Your actual WalletConnect Project ID
+const projectId = '349e1ac007c9cf796d93d921431a0cc9'; // <--- Your WalletConnect Project ID is correctly placed here!
 
 const config = getDefaultConfig({
-  appName: 'Unicat Site',
-  projectId,
+  appName: 'Unicat Site', // Your application name
+  projectId, // Using the projectId defined above
   chains: [
     mainnet,
     sepolia,
+    optimism, // Include Optimism in the list of supported chains
   ],
   transports: {
     [mainnet.id]: http(),
     [sepolia.id]: http(),
+    [optimism.id]: http(), // Add transport for Optimism
   },
-  ssr: true,
+  ssr: true, // Server-side rendering setting
 });
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient(); // Initialize QueryClient
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
